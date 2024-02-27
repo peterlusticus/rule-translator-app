@@ -1,1 +1,1 @@
-export const languages = ["JavaScript","C","Python"]
+export const languages = ["Pseudocode","JavaScript","C","Python"]
