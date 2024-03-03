@@ -1,14 +1,17 @@
 
 "use client";
 import { TextareaText } from "./components/textareaText";
-import { TextareaCode } from "./components/textareaCode";
 import Navbar from "./components/navbar";
 import FormContainer from "./components/formContainer";
 import { Dropdown } from "./components/dropdown";
-import { languages } from "./data/data";
+import { fields, languages, operators } from "./data/data";
 import { FormItem } from "./components/formItem";
 import { ArrowsRightLeftIcon } from "@heroicons/react/16/solid";
 import { useState } from "react";
+import { FlowchartComp } from "./components/flowchart";
+import { FormLine } from "./components/formLine";
+import { InputField } from "./components/input";
+import { FormLineIf } from "./components/formLineIf";
 
 export default function Home() {
   const [satz, setSatz] = useState("")
@@ -18,45 +21,39 @@ export default function Home() {
     setSatz(event.target.value)
   };
 
+  const line = [(<FormLineIf number="1"/>)]
+
   return (
     <body>
       <main>
         <Navbar />
-
         <div className="flex justify-center mx-auto">
-          <div className="grow max-w-7xl px-4 sm:px-6 ">
+          <div className="grow max-w-7xl">
+
             <FormContainer>
-              <div className="flex">
-
-                <div className="w-3/4">
-                  <FormItem title="Regel als Satz eingeben">
-                    <TextareaText onChange={handleChange} satz={setSatz} />
-                  </FormItem>
-                </div>
-
-                <div>
-                  <button type="submit" id="btnChange" className='button-secondary ml-1 mr-1'><ArrowsRightLeftIcon className="h-4 w-4" /></button>
-
-                </div>
-
-                <div className="w-3/4">
-                  <FormItem title="Code">
-                    <Dropdown items={languages} />
-                    <TextareaCode satz={satz} />
-                  </FormItem>
-                </div>
-
-              </div>
-
-              <div className="mt-6">
-                <button className="button-primary w-full">Weiter →</button>
-              </div>
+                <FormItem title="Wenn...">
+                  {line.map(i => {
+                    return <div className="mb-2">{i}</div>;
+                  })}
+                </FormItem>
             </FormContainer>
+
+            <FormContainer>
+              <FormItem title="Dann...">
+                {line.map(i => {
+                  return <div className="mb-2">{i}</div>;
+                })}
+              </FormItem>
+            </FormContainer>
+
+            <FormContainer>
+                <FlowchartComp />
+            </FormContainer>
+
           </div>
         </div>
-
       </main>
       <p className="mt-8 text-center text-base text-gray-400">&copy; 2024 Richard Peters</p>
-    </body>
+    </body >
   );
 }
