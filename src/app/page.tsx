@@ -10,7 +10,6 @@ import { ArrowsRightLeftIcon } from "@heroicons/react/16/solid";
 import { useState } from "react";
 import { FlowchartComp } from "./components/flowchart";
 import { FormLine } from "./components/formLine";
-import { InputField } from "./components/input";
 import { FormLineIf } from "./components/formLineIf";
 
 export default function Home() {

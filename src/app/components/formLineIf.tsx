@@ -1,7 +1,7 @@
 import { fields, operators } from "../data/data";
 import { Dropdown } from "./dropdown";
 import { FormLine } from "./formLine";
-import { InputField } from "./input";
+import { AutocompleteInput } from "./autocompleteInput";
 import "../custom.css"
 
 export function FormLineIf(props: any) {
@@ -10,7 +10,7 @@ export function FormLineIf(props: any) {
     return (<FormLine>
         <div className="w-2/5 mr-4"><Dropdown items={fields} /></div>
         <div className="w-20 mr-4"><Dropdown items={operators} /></div>
-        <div className="w-2/5 mr-4"> <InputField /> </div>
+        <div className="w-2/5 mr-4"> <AutocompleteInput /> </div>
         <button type="button" className="mb-3 mt-1 mr-4 w-9 rounded-none text-xl font-medium text-green-600 hover:text-green-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
           +
         </button>
