@@ -102,7 +102,7 @@ export function FlowchartComp(props: any)  {
         setConns(connections);
       }}
       onDoubleClick={handleCreateNode}
-      style={{ width: 800, height: 600 }}
+      style={{ width: 375, height: 295 }}
       nodes={nodes}
       connections={conns}
     />

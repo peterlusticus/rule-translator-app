@@ -20,11 +20,10 @@ export function AutocompleteInput() {
     return (
         <Combobox value={selectedField} onChange={setSelectedField} nullable>
             <div className="relative w-full">
-
                 <Combobox.Input onChange={(event) => setQuery(event.target.value)} displayValue={(person) => selectedField} className="relative w-full rounded-none border border-gray-300 bg-white text-left outline-none form-dropdown form-input cursor-text" />
                 <Combobox.Options className="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-none bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
                     {query.length > 0 && (
-                        <Combobox.Option value={query} />
+                        <Combobox.Option value={query} hidden />
                     )}
                     {filteredFileds.map((field) => (
                         <Combobox.Option key={field} value={field} className={({ active }) =>

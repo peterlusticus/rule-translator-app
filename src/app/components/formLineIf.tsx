@@ -11,12 +11,13 @@ export function FormLineIf(props: any) {
         <div className="w-2/5 mr-4"><Dropdown items={fields} /></div>
         <div className="w-20 mr-4"><Dropdown items={operators} /></div>
         <div className="w-2/5 mr-4"> <AutocompleteInput /> </div>
-        <button type="button" className="mb-3 mt-1 mr-4 w-9 rounded-none text-xl font-medium text-green-600 hover:text-green-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+        <button type="button" className="mb-2 w-11 rounded-none bg-red-600 hover:bg-red-500 text-xl text-center text-base text-white ">
+         🗑
+        </button>
+        <button type="button" className="mb-2 ml-3 mr-2 w-11 rounded-none bg-green-600 hover:bg-green-500 text-xl text-center text-base text-white ">
           +
         </button>
-        <button type="button" className="mb-3 mt-1 w-9 rounded-none text-xl font-medium text-red-600 hover:text-red-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
-          -
-        </button>
+        
       </FormLine>
     )
 

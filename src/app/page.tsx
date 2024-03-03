@@ -11,6 +11,7 @@ import { useState } from "react";
 import { FlowchartComp } from "./components/flowchart";
 import { FormLine } from "./components/formLine";
 import { FormLineIf } from "./components/formLineIf";
+import { TextareaCode } from "./components/textareaCode";
 
 export default function Home() {
   const [satz, setSatz] = useState("")
@@ -20,35 +21,48 @@ export default function Home() {
     setSatz(event.target.value)
   };
 
-  const line = [(<FormLineIf number="1"/>)]
+  const line = [(<FormLineIf number="1" />)]
 
   return (
     <body>
       <main>
         <Navbar />
         <div className="flex justify-center mx-auto">
-          <div className="grow max-w-7xl">
+          <div className="grow max-w-7xl flex">
 
-            <FormContainer>
+            <div className="w-2/5 mr-10">
+              <FormContainer>
+                <FlowchartComp />
+              </FormContainer>
+            </div>
+
+            <div className="w-4/5">
+              <FormContainer>
                 <FormItem title="Wenn...">
                   {line.map(i => {
                     return <div className="mb-2">{i}</div>;
                   })}
                 </FormItem>
-            </FormContainer>
+                <br /><br />
+                <FormItem title="Dann...">
+                  {line.map(i => {
+                    return <div className="mb-2">{i}</div>;
+                  })}
+                </FormItem>
+              </FormContainer>
+            </div>
+          </div>
+        </div>
 
-            <FormContainer>
-              <FormItem title="Dann...">
-                {line.map(i => {
-                  return <div className="mb-2">{i}</div>;
-                })}
-              </FormItem>
-            </FormContainer>
-
-            <FormContainer>
-                <FlowchartComp />
-            </FormContainer>
-
+        <div className="flex justify-center mx-auto">
+          <div className="grow max-w-7xl flex">
+            <div className="w-full">
+              <FormContainer>
+                <FormItem title="Textausgabe">
+                  <TextareaCode />
+                </FormItem>
+              </FormContainer>
+            </div>
           </div>
         </div>
       </main>
