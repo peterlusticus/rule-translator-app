@@ -6,7 +6,7 @@ function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(' ')
 }
 
-export function AutocompleteInput() {
+export function AutocompleteInput(porps: any) {
     const [selectedField, setSelectedField] = useState('')
     const [query, setQuery] = useState('')
 
