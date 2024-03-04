@@ -2,18 +2,20 @@ import { useEffect, useState } from 'react'
 import { Combobox } from '@headlessui/react'
 import { fields } from '../data/data'
 import { CalculatorIcon, ChevronUpDownIcon, ListBulletIcon, PencilIcon } from '@heroicons/react/20/solid'
+import { setRuleValue } from '../page'
 
 function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(' ')
 }
 
-export function AutocompleteInput(porps: any) {
+export function AutocompleteInput(props: any) {
     const [selectedField, setSelectedField] = useState('')
     const [query, setQuery] = useState('')
     const [selectedDatatype, setSelectedDatatype] = useState("string")
 
     console.log(selectedDatatype)
 
+    setRuleValue(true, String(props.prop), selectedField)
 
     const filteredFileds =
         query === ''

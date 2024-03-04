@@ -2,6 +2,7 @@
 import { Fragment, useState } from 'react'
 import { Listbox, Transition } from '@headlessui/react'
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
+import { setRuleValue } from '../page';
 
 function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(' ')
@@ -11,6 +12,8 @@ export function Dropdown(props: any) {
 
     const items: string[] = props.items;
     const [selected, setSelected] = useState(items[0])
+
+    setRuleValue(Boolean(props.order), String(props.prop), selected)
 
     return (
         <Listbox value={selected} onChange={setSelected}>
