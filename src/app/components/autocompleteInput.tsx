@@ -1,21 +1,19 @@
-import { useEffect, useState } from 'react'
 import { Combobox } from '@headlessui/react'
+import { CalculatorIcon, ListBulletIcon, PencilIcon } from '@heroicons/react/20/solid'
+import { useEffect, useState } from 'react'
 import { fields } from '../data/data'
-import { CalculatorIcon, ChevronUpDownIcon, ListBulletIcon, PencilIcon } from '@heroicons/react/20/solid'
-import { setRuleValue } from '../page'
+import { setRuleValue } from '../data/generate'
 
 function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(' ')
 }
 
-export function AutocompleteInput(props: any) {
+export function AutocompleteInput(props: { prop: string }) {
     const [selectedField, setSelectedField] = useState('')
     const [query, setQuery] = useState('')
     const [selectedDatatype, setSelectedDatatype] = useState("string")
 
-    console.log(selectedDatatype)
-
-    setRuleValue(true, String(props.prop), selectedField)
+    setRuleValue(true, props.prop, selectedField)
 
     const filteredFileds =
         query === ''
@@ -27,19 +25,16 @@ export function AutocompleteInput(props: any) {
     useEffect(() => {
         if (filteredFileds.indexOf(selectedField) == 0) {
             setSelectedDatatype("list")
-        } else if (isNaN(Number(selectedField))) {
+        } else if (isNaN(Number(selectedField)) || selectedField == '') {
             setSelectedDatatype("string")
-        } else{
+        } else {
             setSelectedDatatype("number")
         }
     }, [selectedField]);
 
-
     return (
         <Combobox value={selectedField} onChange={setSelectedField} nullable>
             <div className="relative w-full">
-
-
                 <Combobox.Input onChange={(event) => setQuery(event.target.value)} displayValue={(person) => selectedField} className="relative w-full rounded-none border border-gray-300 bg-white text-left outline-none form-dropdown form-input cursor-text" />
                 {selectedDatatype == "list" && <div className="pointer-events-none absolute inset-y-0 right-0 ml-3 mt-2.5 items-center pr-2"> <ListBulletIcon className="h-5 w-5 text-gray-400" aria-hidden="true" /> </div>}
                 {selectedDatatype == "string" && <div className="pointer-events-none absolute inset-y-0 right-0 ml-3 mt-2.5 items-center pr-2"> <PencilIcon className="h-5 w-5 text-gray-400" aria-hidden="true" /> </div>}
